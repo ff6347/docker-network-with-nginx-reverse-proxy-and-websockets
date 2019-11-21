@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>client</h1>
+    <script>
+        document.addEventListener('DOMContentLoaded',function() {
+          fetch('/api/status').then(res=>{
+            console.log(res);
+          }).catch(err=>{
+            console.error(err);
+          })
+
+          const socket = new WebSocket(`ws://${location.hostname}:${location.port}/socket`);
+          console.log(socket);
+          socket.onmessage = message => {
+            console.log(message.data);
+            document.body.append(message.data);
+          };
+          socket.onopen = () => {
+            let interval = setInterval(() => {
+              console.log("sending ping");
+              socket.send(JSON.stringify({ data: "ping" }));
+            }, 500);
+          };
+  });
+    </script>
+  </body>
+</html>
