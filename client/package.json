@@ -16,6 +16,6 @@
   },
   "devDependencies": {
     "@types/express": "4.17.2",
-    "reload": "3.0.3"
+    "reload": "3.1.0"
   }
 }
