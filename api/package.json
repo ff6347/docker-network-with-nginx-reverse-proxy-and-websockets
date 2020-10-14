@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/express": "4.17.8",
-    "nodemon": "2.0.4",
+    "nodemon": "2.0.5",
     "reload": "3.1.1"
   }
 }
